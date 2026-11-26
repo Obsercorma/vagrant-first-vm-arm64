@@ -13,9 +13,9 @@ Vagrant.configure("2") do |config|
     config.vm.box_version = "202510.26.0"
 
     machine.vm.network :private_network, ip: "192.168.56.80"
-    # Un repertoire partagé est un plus mais demande beaucoup plus
-    # de travail - a voir à la fin
-    #machine.vm.synced_folder "./data", "/vagrant_data", SharedFoldersEnableSymlinksCreate: false
+    
+    # shared folder configuration
+    machine.vm.synced_folder "./data", "/vagrant_data", SharedFoldersEnableSymlinksCreate: false
 
     machine.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--name", "srv-web"]
